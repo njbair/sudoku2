@@ -1,0 +1,111 @@
+@grayDarker  : #333;
+@grayDark    : #666;
+@gray        : #888;
+@grayLight   : #bbb;
+@grayLighter : #ddd;
+@white       : #fff;
+@yellowPale  : #ffb;
+
+body {
+    background: @white;
+    color: @grayDarker;
+}
+header {
+    margin: 60px 0;
+    font-family: 'Patua One', sans-serif;
+    text-align: center;
+    
+    h1 {
+        margin: 0;
+        font-size: 36px;
+        font-weight: normal;
+        line-height: 36px;
+    }
+}
+
+.gameBoardContainer {
+    text-align: center;
+}
+
+table.gameBoard {
+    @boardBorderWidth : 5px;
+    @blockBorderWidth : 5px;
+    @cellBorderWidth  : 3px;
+    @cellWidth        : 40px;
+    @cellHeight       : 40px;
+    
+    @boardWidth  : (@boardBorderWidth * 2) + (@blockBorderWidth * 2) + (@cellBorderWidth * 6) + (@cellWidth * 9);
+    @boardHeight : (@boardBorderWidth * 2) + (@blockBorderWidth * 2) + (@cellBorderWidth * 6) + (@cellHeight * 9);
+    
+    @boardBorderColor : @grayLight;
+    @blockBorderColor : @grayLight;
+    @cellBorderColor  : @grayLighter;
+    @textColor        : @grayDark;
+    
+    border: 0;
+    margin: 0 auto;
+    padding: 0;
+    
+    tr {
+        td {
+            height: @cellHeight;
+            width: @cellWidth;
+            
+            border: @cellBorderWidth solid @cellBorderColor;
+            
+            .gameBoardInput {
+                display: block;
+                
+                margin: 0;
+                padding: 0;
+                border: 0;
+                
+                height: @cellHeight;
+                width: @cellWidth;
+                
+                font-family: 'Gloria Hallelujah', sans-serif;
+                font-size: 24px;
+                text-align: center;
+                line-height: @cellHeight;
+                text-decoration: none;
+                cursor: pointer;
+
+                color: @textColor;
+                
+                &:focus, &.lastFocus {
+                    outline: none;
+                    background: @yellowPale;
+                }
+            }
+            
+            &.boardFirst  { border-left-width   : @boardBorderWidth; border-left-color   : @boardBorderColor; }
+            &.boardLast   { border-right-width  : @boardBorderWidth; border-right-color  : @boardBorderColor; }
+            &.boardTop    { border-top-width    : @boardBorderWidth; border-top-color    : @boardBorderColor; }
+            &.boardBottom { border-bottom-width : @boardBorderWidth; border-bottom-color : @boardBorderColor; }
+            &.blockFirst  { border-left-width   : @blockBorderWidth; border-left-color   : @blockBorderColor; }
+            &.blockLast   { border-right-width  : @blockBorderWidth; border-right-color  : @blockBorderColor; }
+            &.blockTop    { border-top-width    : @blockBorderWidth; border-top-color    : @blockBorderColor; }
+            &.blockBottom { border-bottom-width : @blockBorderWidth; border-bottom-color : @blockBorderColor; }
+        }
+    }
+}
+
+.gameControls {
+    margin: 30px 0;
+    
+    button {
+        background: @white;
+        border: 3px solid @gray;
+        color: @gray;
+        font-family: 'Patua One', sans-serif;
+        font-size: 20px;
+        line-height: 40px;
+        margin: 0 10px;
+        padding: 0 10px;
+        
+        &:hover {
+            background-color: @gray;
+            color: @white;
+        }
+    }
+}
